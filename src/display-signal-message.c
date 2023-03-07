@@ -1,4 +1,5 @@
 #include "display-signal-message.h"
+#include "log-message.h"
 
 /**
  * @brief Displays a message indicating a signal has been received and logs it

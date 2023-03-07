@@ -27,9 +27,9 @@
  * @see remove_old_logs
  * 
  * @author Cloudgen Wong
- * @date 2023-03-05
+ * @date 2023-03-07
  */
-int main() {
+int main(int argc, char *argv[]) {
   char started = 0;
 
   if (make_directory(LOG_DIR) != 0) {
@@ -39,15 +39,19 @@ int main() {
   }
   signal(SIGINT, handle_exit);
   signal(SIGTERM, handle_exit);
-  while (1) {
-    if ( !started ) {
-      log_message("«Thread_main» ============ Started ============");
-      started = 1;
-    } else {
-      log_message(".");
+  if (argc > 1 && (strcmp(argv[1], "-v") == 0 ||  strcmp(argv[1], "--version") == 0)){
+    printf("%s (%s)\nHomepage: https://github.com/leolio-vala/heartbeat\n\n", APP_NAME, APP_VERSION );
+  } else if (argc == 1) {
+    while (1) {
+      if ( !started ) {
+        log_message("«Thread_main» ============ Started ============");
+        started = 1;
+      } else {
+        log_message(".");
+      }
+      remove_old_logs(LOG_DIR);
+      sleep(300);
     }
-    remove_old_logs(LOG_DIR);
-    sleep(300);
   }
   return 0;
 }

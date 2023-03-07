@@ -1,4 +1,5 @@
 #include "handle-exit.h"
+#include "display-signal-message.h"
 
 /**
  * @brief Handle exit signal.

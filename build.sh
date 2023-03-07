@@ -17,7 +17,7 @@ gcc -Wall -Werror \
     src/display-signal-message.c \
     src/handle-exit.c \
     src/log-message.c \
-    src/main.c \    
+    src/main.c \
     src/make-directory.c \
     src/remove-old-log.c \
     -o ${TARGET}
